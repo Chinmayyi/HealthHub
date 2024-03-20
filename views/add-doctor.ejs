@@ -1,0 +1,33 @@
+<%- include("partials/header.ejs") %>
+
+<h1>Add New Doctor</h1>
+
+<form action="/add-doctor" method="post">
+
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" class="form-control" required>
+
+    <label for="specialization">Specialization</label>
+    <select id="specialization" name="specialization" class="form-control" required>
+        <option value=""></option>
+        <option value="Physician">Physician</option>
+        <option value="Cardiology">Cardiology</option>
+        <option value="Neurology">Neurology</option>
+        <option value="Orthopedics">Orthopedics</option>
+        <option value="Dermatology">Dermatology</option>
+        <option value="Opthamologist">Opthamologist</option>
+        <option value="Pediatrics">Pediatrics</option>
+        <option value="Radiology">Radiology</option>
+        
+    </select>
+
+    <label for="contact">Contact Information</label>
+    <input type="text" id="contact" name="contact" class="form-control" required pattern="[0-9]{10}">
+
+    <label for="availability">Availability</label>
+    <input type="text" id="availability" name="availability" class="form-control" required>
+
+    <button type="submit">Add Doctor</button>
+</form>
+
+<%- include("partials/footer.ejs") %>

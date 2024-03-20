@@ -1,0 +1,70 @@
+<%- include("partials/header.ejs") %>
+
+<h2>Regular Patient</h2>
+<form action="/regAppointment" method="post">
+    <label for="contact">Contact No</label>
+    <input type="tel" id="contact" name="contact" class="form-control" required pattern="[0-9]{10}">
+
+    <label for="symptoms">Symptoms</label>
+    <input type="text" id="symptoms" name="symptoms" class="form-control" required>
+
+    <label for="department">Department</label>
+    <select id="department" name="department" class="form-control" required onchange="fetchDoctors(this.value)">
+        <option value=""></option>
+        <option value="Physician">Physician</option>
+        <option value="Cardiology">Cardiology</option>
+        <option value="Neurology">Neurology</option>
+        <option value="Orthopedics">Orthopedics</option>
+        <option value="Dermatology">Dermatology</option>
+        <option value="Opthamologist">Opthamologist</option>
+        <option value="Pediatrics">Pediatrics</option>
+        <option value="Radiology">Radiology</option>
+        
+    </select>
+
+    <label for="doctor">Doctor</label>
+    <select id="doctor" name="doctor" class="form-control" required>
+        <option value=""></option>
+    </select>
+
+    <label for="availability">Doctor Availability</label>
+    <input type="text" class="form-control" id="availability" name="availability" required>
+
+    <button type="submit" class="btn btn-primary">Book</button>
+</form>
+
+<%- include("partials/footer.ejs") %>
+
+<script>
+    function fetchDoctors(department) {
+      var doctorSelect = document.getElementById('doctor');
+      doctorSelect.innerHTML = '<option value=""></option>'; // Clear existing options before fetching
+    
+      fetch('/fetchDoctors', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded' // Use correct content type for form data
+        },
+        body: `department=${department}` // Send department as query string
+      })
+      .then(response => response.json())
+      .then(doctors => {
+        doctors.forEach(doctor => {
+            const option = document.createElement('option');
+            option.value = doctor.name; 
+            option.text = doctor.name; 
+            option.dataset.availability = doctor.availability; // Store availability as data attribute
+            doctorSelect.appendChild(option);
+        });
+      })
+      .catch(error => console.error('Error fetching doctors:', error));
+    }
+
+    const doctorSelect = document.getElementById('doctor');
+    doctorSelect.addEventListener('change', function() {
+    const selectedDoctorAvailability = this.options[this.selectedIndex].dataset.availability;
+    document.getElementById('availability').value = selectedDoctorAvailability;
+    });
+
+    
+    </script>

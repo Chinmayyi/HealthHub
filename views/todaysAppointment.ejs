@@ -1,0 +1,51 @@
+<%- include("partials/header.ejs") %>
+
+
+    <h1>Today's Appointment Details</h1>
+
+ <% if (appointments && appointments.length > 0) { %>
+      <div class="container">
+        <ul class="list-group mt-3">
+          <% appointments.forEach(function(item) { %>
+            <h2 class="mt-5"><%= item.patient.name %></h2>
+            <li class="list-group-item">
+              <table class="table table-light table-hover">
+                <tr>
+                  <td>Patient ID: </td>
+                  <td><%= item.patientId %></td>
+                </tr>
+                <tr>
+                  <td>Department:</td>
+                  <td><%= item.department %></td>
+                </tr>
+                <tr>
+                  <td>Doctor:</td>
+                  <td><%= item.doctor %></td>
+                </tr>
+                <tr>
+                  <td>Symptoms:</td>
+                  <td><%= item.symptoms %></td>
+                </tr>
+
+                    <% if(item.prescription === null){ %>
+                      <form action="/prescription" method="post">
+                        <input type="hidden" name="hiddenId" value="<%= item.id %>"></input>
+                        <tr>
+                          <td>
+                            <label for="pres">Prescription</label>
+                            <input type="text" id="pres" name="pres" style="margin-left: 10%; width: 80%;" class="form-control"  required>
+                          </td>
+                          <td>
+                            <button type="submit" class="btn btn-primary" >Add Prescription</button>
+                          </td>
+                        </tr>
+                    </form>
+                    <% } %>
+              </table>
+            </li>
+          <% }); %>
+        </ul>
+      </div>
+
+<% }  %> 
+<%- include("partials/footer.ejs") %>

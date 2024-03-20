@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/content.css">
+  <title>HealthHub</title>
+</head>
+<header>
+  <nav class="navbar navbar-expand-custom navbar-mainbg">
+    <a class="navbar-brand navbar-logo" href="#">HealthHub</a>
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class="fas fa-bars text-white"></i>
+    </button>
+
+    <!-- to hide div from navbar in login,register,Landing page -->
+
+    <% if (!hideDiv) { %>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <div class="hori-selector">
+          <div class="left"></div>
+
+        </div>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/home"><i class="far fa-copy"></i>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/appointment"><i class="far fa-calendar-alt"></i>Appointments</a>      
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/patient-details"><i class="far fa-clone"></i>Patient's Details</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/todaysAppointment"><i class="far fa-calendar-alt"></i>Today's Appointments</a>      
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/doctors"><i class="far fa-clone"></i>Doctors</a>
+        </li>
+      </ul>
+    </div>
+
+    <% } %>
+  </nav>
+</header>
+<main class="container">
+ 
