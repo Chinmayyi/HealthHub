@@ -1,4 +1,4 @@
-Landing Page
+Landing page
 <img width="1470" alt="Screenshot 2024-03-20 at 8 21 21 PM" src="https://github.com/Adityaprakash754/HealthHub/assets/112635806/d42b3803-0647-401a-a2f4-f583ae8c8d5e">
 
 Sign Up Page
